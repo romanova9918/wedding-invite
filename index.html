@@ -67,6 +67,34 @@
             border-radius: 50%;
             border: 2px solid #aaa;
         }
+	.slideshow {
+  	    text-align: center;
+	    padding: 40px 20px;
+	    background-color: #f8f8f8;
+        }
+	.slideshow h2 {
+	    font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #444;
+        }
+	.slider {
+            position: relative;
+	    width: 90%;
+	    max-width: 500px;
+	    margin: auto;
+	    overflow: hidden;
+	    border-radius: 12px;
+	    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+	}
+	.slide {
+	    display: none;
+	    width: 100%;
+	    transition: opacity 1s ease-in-out;
+	}
+	.slide.active {
+	    display: block;
+	}
+
     </style>
 </head>
 <body>
@@ -125,6 +153,21 @@
     <img src="1000001536.jpg" class="final-photo" alt="Совместное фото">
     <p>Мы будем счастливы видеть вас на нашем празднике!</p>
 </section>
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+  }
+
+  setInterval(() => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }, 3000);
+</script>
 
 </body>
 </html>
